@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Servicio">
+		<xs:annotation>
+			<xs:documentation>Cine</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="Pelicula">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="genero">
+				</xs:element>
+				<xs:element name="director">
+				</xs:element>
+				<xs:element name="duracion">
+				</xs:element>
+				<xs:element name="clasificacón">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="función">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="horario">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sala">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="número"></xs:element>
+				<xs:element name="capacidad"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
