@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://com.cine" targetNamespace="http://com.cine">
+	<wsdl:types>
+		<xs:schema targetNamespace="http://com.cine" elementFormDefault="qualified">
+			<xs:include schemaLocation="../Peliculas/xsdpelicula.xsd"/> <!-- Rutas relativas-->
+			<xs:include schemaLocation="../Peliculas/commonspelicula.xsd"/>
+		</xs:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="movieRequest"> <!-- Petición para manejar elementos de tipo 'película'-->
+		<wsdl:part name="parameter" element="tns:pelicula"/>
+	</wsdl:message>
+	<wsdl:message name="ackResponse"> <!-- Creo que esto solo sirve como bandera al mandar peticiones-->
+		<wsdl:part name="parameter" element="tns:ack"/>
+	</wsdl:message>
+	
+	<wsdl:portType name="MoviePortType"> <!-- Las tres operaciones relacionadas con el elemento 'película'-->
+		<wsdl:operation name="addMovieOperation">
+			<wsdl:input message="tns:movieRequest"/>
+			<wsdl:output message="tns:ackResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="editMovieOperation">
+			<wsdl:input message="tns:movieRequest"/>
+			<wsdl:output message="tns:ackResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="deleteMovieOperation">
+			<wsdl:input message="tns:movieRequest"/>
+			<wsdl:output message="tns:ackResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="MovieBinding" type="tns:MoviePortType"> <!-- Esto creo que ejecuta las operaciones definidas-->
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="addMovieOperation">
+			<soap:operation soapAction="urn:#NewOperation"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="editMovieOperation">
+			<soap:operation soapAction="urn:#NewOperation"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="deleteMovieOperation">
+			<soap:operation soapAction="urn:#NewOperation"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="MovieService"> <!-- Servicio para manejar las peticiones de las películas-->
+		<wsdl:port name="MoviePort" binding="tns:MovieBinding">
+			<soap:address location="No target address"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
