@@ -6,6 +6,7 @@
 			<xs:include schemaLocation="commonscine.xsd"/>
 		</xs:schema>
 	</wsdl:types>
+	<!-- Especificar qué servicios son-->
 	<wsdl:message name="peliculaRequest">
 		<wsdl:part name="parameter" element="tns:pelicula"/>
 	</wsdl:message>
